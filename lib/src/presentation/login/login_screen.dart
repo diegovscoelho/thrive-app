@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:thrive/src/core/utils/app_styles.dart';
 import 'package:thrive/src/core/utils/custom_text_field.dart';
+import 'package:thrive/src/presentation/register/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -39,6 +41,26 @@ class LoginScreen extends StatelessWidget {
                     CustomTextField(labelText: 'E-mail'),
                     const SizedBox(height: 20),
                     CustomTextField(labelText: 'Senha'),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegisterScreen(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Não possuo uma conta',
+                            style: AppStyles.label(),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

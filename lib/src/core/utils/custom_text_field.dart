@@ -13,7 +13,7 @@ class CustomTextField extends StatelessWidget {
 
   static const _defaultInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(10)),
-    borderSide: BorderSide(color: Colors.white),
+    borderSide: BorderSide(color: Color(0xFF0f0c29)),
   );
 
   @override
