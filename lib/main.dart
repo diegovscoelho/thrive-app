@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thrive/src/presentation/landing/landing_screen.dart';
+import 'package:thrive/src/core/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const LandingScreen(),
+    return MaterialApp.router(
+      routerConfig: appRouter,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

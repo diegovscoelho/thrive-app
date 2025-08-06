@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:thrive/src/core/utils/app_styles.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
 import 'package:thrive/src/core/utils/custom_secondary_button.dart';
@@ -51,17 +52,21 @@ class LandingScreen extends StatelessWidget {
                       const SizedBox(height: 12),
                       Text(
                         'Seja bem vindo ao melhor aplicativo de controle finaceiro do Brasil',
-                        style: AppStyles.descriptionStyle,
+                        style: AppStyles.descriptionStyle(),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 24),
                       CustomPrimaryButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.push('/login');
+                        },
                         text: 'Já tenho conta',
                       ),
                       const SizedBox(height: 24),
                       CustomSecondaryButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.push('/register');
+                        },
                         text: 'Quero me cadastrar',
                       ),
                     ],

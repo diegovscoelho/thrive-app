@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/app_styles.dart';
+import 'package:thrive/src/core/utils/custom_primary_button.dart';
 import 'package:thrive/src/core/utils/custom_text_field.dart';
-import 'package:thrive/src/presentation/register/register_screen.dart';
+import 'package:thrive/src/presentation/register/pages/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -17,7 +18,7 @@ class LoginScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF004d40), Color(0xFF388e3c)],
+            colors: [Color(0xFF0f0c29), Color(0xFF24243e), Color(0xFF302b63)],
           ),
         ),
         child: Padding(
@@ -41,7 +42,14 @@ class LoginScreen extends StatelessWidget {
                     CustomTextField(labelText: 'E-mail'),
                     const SizedBox(height: 20),
                     CustomTextField(labelText: 'Senha'),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 32),
+                    CustomPrimaryButton(
+                      onPressed: () {},
+                      text: 'Logar',
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                    ),
+                    const SizedBox(height: 12),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -55,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            'Não possuo uma conta',
+                            'Esqueci minha senha',
                             style: AppStyles.label(),
                           ),
                         ),

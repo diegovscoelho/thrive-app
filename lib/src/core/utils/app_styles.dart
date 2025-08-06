@@ -26,11 +26,13 @@ class AppStyles {
     );
   }
 
-  static final TextStyle primaryButtonStyle = GoogleFonts.poppins(
-    fontSize: 12,
-    color: Colors.white,
-    fontWeight: FontWeight.bold,
-  );
+  static TextStyle primaryButtonStyle({Color? color}) {
+    return GoogleFonts.poppins(
+      fontSize: 12,
+      color: color ?? Colors.white,
+      fontWeight: FontWeight.bold,
+    );
+  }
 
   static final TextStyle secondaryButtonStyle = GoogleFonts.poppins(
     fontSize: 12,
@@ -38,9 +40,9 @@ class AppStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static final TextStyle descriptionStyle = GoogleFonts.poppins(
+  static TextStyle descriptionStyle({Color? color}) => GoogleFonts.poppins(
     fontSize: 12,
-    color: Color(0xFF0f0c29),
+    color: color ?? Color(0xFF0f0c29),
     fontWeight: FontWeight.w500,
   );
 }

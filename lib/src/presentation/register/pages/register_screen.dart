@@ -13,7 +13,7 @@ class RegisterScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF004d40), Color(0xFF388e3c)],
+            colors: [Color(0xFF0f0c29), Color(0xFF302b63), Color(0xFF24243e)],
           ),
         ),
       ),
