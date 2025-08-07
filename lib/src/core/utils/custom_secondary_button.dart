@@ -20,7 +20,7 @@ class CustomSecondaryButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           side: const BorderSide(color: Color(0xFF0f0c29), width: 1.5),
           foregroundColor: const Color(0xFF0f0c29),
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
