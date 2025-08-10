@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
 import 'package:thrive/src/core/utils/custom_text_field.dart';
 
+// TODO: Implementar controllers dos formulários
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 

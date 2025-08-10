@@ -4,7 +4,6 @@ import 'package:thrive/src/core/utils/app_styles.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
 import 'package:thrive/src/core/utils/custom_secondary_button.dart';
 
-// TODO: Implementar login por google
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
 
