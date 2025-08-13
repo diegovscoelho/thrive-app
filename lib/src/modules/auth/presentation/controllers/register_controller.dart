@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:thrive/src/modules/auth/domain/usecases/register_user_usecase.dart';
 import 'package:thrive/src/shared/entities/user.dart';
@@ -23,6 +24,11 @@ class RegisterController extends StateNotifier<RegisterState> {
 
   RegisterController(this.registerUserUsecase) : super(RegisterState());
 
+  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
   Future<void> register({
     required String username,
     required String email,
@@ -40,5 +46,14 @@ class RegisterController extends StateNotifier<RegisterState> {
     } catch (e) {
       state = state.copyWith(errorMessage: e.toString(), isLoading: false);
     }
+  }
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
   }
 }

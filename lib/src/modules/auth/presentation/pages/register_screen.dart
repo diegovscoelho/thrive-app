@@ -13,12 +13,6 @@ class RegisterScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(registerControllerProvider);
     final controller = ref.read(registerControllerProvider.notifier);
-    
-    // Create TextEditingControllers to get the text from the fields
-    final usernameController = TextEditingController();
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-    final confirmPasswordController = TextEditingController();
 
     return Scaffold(
       body: Container(
@@ -49,13 +43,13 @@ class RegisterScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
                   children: [
-                    CustomTextField(labelText: 'Nome de usuário', controller: usernameController),
+                    CustomTextField(labelText: 'Nome de usuário', controller: controller.usernameController),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'E-mail', controller: emailController),
+                    CustomTextField(labelText: 'E-mail', controller: controller.emailController),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'Senha', controller: passwordController),
+                    CustomTextField(labelText: 'Senha', controller: controller.passwordController),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'Confirme a senha', controller: confirmPasswordController),
+                    CustomTextField(labelText: 'Confirme a senha', controller: controller.confirmPasswordController),
                     const SizedBox(height: 32),
                     Consumer(
                       builder: (context, watch, child) {
@@ -65,9 +59,9 @@ class RegisterScreen extends ConsumerWidget {
                               ? null
                               : () {
                                   controller.register(
-                                    username: usernameController.text,
-                                    email: emailController.text,
-                                    password: passwordController.text,
+                                    username: controller.usernameController.text,
+                                    email: controller.emailController.text,
+                                    password: controller.passwordController.text,
                                   );
                                 },
                           text: 'Criar conta',
