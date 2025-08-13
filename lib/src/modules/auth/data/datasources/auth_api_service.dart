@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthApiService {
-  final String baseUrl = 'http://localhost:3000/api';
+  final String baseUrl = 'http://10.0.2.2:3000/api';
 
   Future<Map<String, dynamic>> register(String username, String email, String password) async {
     final response = await http.post(

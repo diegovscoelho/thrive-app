@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
 import 'package:thrive/src/core/utils/custom_text_field.dart';
+import 'package:thrive/src/modules/auth/presentation/controllers/register_controller_provider.dart';
 
-// TODO: Implementar controllers dos formulários
-class RegisterScreen extends StatelessWidget {
+// TODO: Implementar confirmação de cadatro e redirecionamento para tela de login
+class RegisterScreen extends ConsumerWidget {
   const RegisterScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(registerControllerProvider);
+    final controller = ref.read(registerControllerProvider.notifier);
+    
+    // Create TextEditingControllers to get the text from the fields
+    final usernameController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -38,20 +49,40 @@ class RegisterScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
                   children: [
-                    CustomTextField(labelText: 'Nome de usuário'),
+                    CustomTextField(labelText: 'Nome de usuário', controller: usernameController),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'E-mail'),
+                    CustomTextField(labelText: 'E-mail', controller: emailController),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'Senha'),
+                    CustomTextField(labelText: 'Senha', controller: passwordController),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'Confirme a senha'),
+                    CustomTextField(labelText: 'Confirme a senha', controller: confirmPasswordController),
                     const SizedBox(height: 32),
-                    CustomPrimaryButton(
-                      onPressed: () {},
-                      text: 'Criar conta',
-                      backgroundColor: Colors.white,
-                      textColor: Colors.black,
+                    Consumer(
+                      builder: (context, watch, child) {
+                        final state = watch.watch(registerControllerProvider);
+                        return CustomPrimaryButton(
+                          onPressed: state.isLoading
+                              ? null
+                              : () {
+                                  controller.register(
+                                    username: usernameController.text,
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  );
+                                },
+                          text: 'Criar conta',
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black,
+                        );
+                      },
                     ),
+                    const SizedBox(height: 16),
+                    if (state.isLoading) const CircularProgressIndicator(),
+                    if (state.errorMessage != null)
+                      Text(
+                        state.errorMessage!,
+                        style: const TextStyle(color: Colors.red),
+                      ),
                   ],
                 ),
               ),

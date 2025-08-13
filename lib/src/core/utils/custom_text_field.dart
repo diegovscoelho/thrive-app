@@ -5,10 +5,12 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.labelText,
+    required this.controller,
     this.keyboardType = TextInputType.text,
   });
 
   final String labelText;
+  final TextEditingController controller;
   final TextInputType keyboardType;
 
   static const _defaultInputBorder = OutlineInputBorder(
@@ -19,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: GoogleFonts.montserrat(
