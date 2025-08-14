@@ -1,4 +1,4 @@
-# Thrive App
+# Thrive
 
 Este repositório contém o código-fonte do frontend da aplicação Thrive, desenvolvido em Flutter. A aplicação oferece uma interface móvel responsiva para controle financeiro pessoal e integra-se ao backend da aplicação.
 
