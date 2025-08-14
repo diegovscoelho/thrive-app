@@ -1,16 +1,22 @@
-# thrive
+# Thrive App
 
-A new Flutter project.
+Este repositório contém o código-fonte do frontend da aplicação Thrive, desenvolvido em Flutter. A aplicação oferece uma interface móvel responsiva para controle financeiro pessoal e integra-se ao backend da aplicação.
 
-## Getting Started
+## Tecnologias Utilizadas
 
-This project is a starting point for a Flutter application.
+- Flutter
+- Dart
+- Riverpod para gerenciamento de estado
+- GoRouter para navegação
 
-A few resources to get you started if this is your first Flutter project:
+## Funcionalidades
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Registro e autenticação de usuários
+- Dashboard com visão geral das finanças
+- Gerenciamento de receitas e despesas
+- Validação de formulários com feedback em tempo real
+- Navegação entre telas com GoRouter
+- Gerenciamento de estado reativo usando Riverpod
+- Interface responsiva adaptada para diferentes tamanhos de tela
+- Limpeza e reset automático de formulários após submissão
+- Controle de carregamento e mensagens de erro nas interações do usuário
