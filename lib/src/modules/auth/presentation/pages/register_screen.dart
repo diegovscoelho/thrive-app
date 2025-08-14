@@ -12,7 +12,7 @@ class RegisterScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(registerControllerProvider);
-    final controller = ref.read(registerControllerProvider.notifier);
+    final controller = ref.watch(registerControllerProvider.notifier);
 
     return Scaffold(
       body: Container(
@@ -43,27 +43,47 @@ class RegisterScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
                   children: [
-                    CustomTextField(labelText: 'Nome de usuário', controller: controller.usernameController),
+                    CustomTextField(
+                      labelText: 'Nome de usuário',
+                      controller: controller.usernameController,
+                      errorMessage: state.usernameError,
+                      onChanged: (value) => controller.validateUsername(value),
+                    ),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'E-mail', controller: controller.emailController),
+                    CustomTextField(
+                      labelText: 'E-mail',
+                      controller: controller.emailController,
+                      errorMessage: state.emailError,
+                      onChanged: (value) => controller.validateEmail(value),
+                    ),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'Senha', controller: controller.passwordController),
+                    CustomTextField(
+                      labelText: 'Senha',
+                      controller: controller.passwordController,
+                      errorMessage: state.passwordError,
+                      onChanged: (value) => controller.validatePassword(value),
+                      obscureText: true,
+                    ),
                     const SizedBox(height: 20),
-                    CustomTextField(labelText: 'Confirme a senha', controller: controller.confirmPasswordController),
+                    CustomTextField(
+                      labelText: 'Confirme a senha',
+                      controller: controller.confirmPasswordController,
+                      errorMessage: state.confirmPasswordError,
+                      onChanged:
+                          (value) => controller.validateConfirmPassword(value),
+                      obscureText: true,
+                    ),
                     const SizedBox(height: 32),
                     Consumer(
                       builder: (context, watch, child) {
                         final state = watch.watch(registerControllerProvider);
                         return CustomPrimaryButton(
-                          onPressed: state.isLoading
-                              ? null
-                              : () {
-                                  controller.register(
-                                    username: controller.usernameController.text,
-                                    email: controller.emailController.text,
-                                    password: controller.passwordController.text,
-                                  );
-                                },
+                          onPressed:
+                              (state.isLoading || !state.isFormValid)
+                                  ? null
+                                  : () {
+                                    controller.register();
+                                  },
                           text: 'Criar conta',
                           backgroundColor: Colors.white,
                           textColor: Colors.black,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thrive/src/core/utils/app_styles.dart'; // Certifique-se de que este import está correto
+import 'package:thrive/src/core/utils/app_styles.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
   const CustomPrimaryButton({
@@ -22,6 +22,7 @@ class CustomPrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          disabledBackgroundColor: const Color(0xFF707070),
           backgroundColor: backgroundColor ?? const Color(0xFF0f0c29),
           foregroundColor: textColor ?? Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 20),
