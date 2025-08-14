@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
 import 'package:thrive/src/core/utils/custom_text_field.dart';
-import 'package:thrive/src/modules/auth/presentation/controllers/register_controller_provider.dart';
+import 'package:thrive/src/modules/auth/presentation/register/controllers/register_controller_provider.dart';
 
 // TODO: Implementar confirmação de cadatro e redirecionamento para tela de login
 class RegisterScreen extends ConsumerWidget {

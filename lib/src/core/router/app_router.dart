@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:thrive/src/modules/dashboard/presentation/pages/dashboard_screen.dart';
 import 'package:thrive/src/modules/auth/presentation/pages/landing_screen.dart';
-import 'package:thrive/src/modules/auth/presentation/pages/login_screen.dart';
-import 'package:thrive/src/modules/auth/presentation/pages/register_screen.dart';
+import 'package:thrive/src/modules/auth/presentation/login/pages/login_screen.dart';
+import 'package:thrive/src/modules/auth/presentation/register/pages/register_screen.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',

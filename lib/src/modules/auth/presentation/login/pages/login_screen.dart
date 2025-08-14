@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/app_styles.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
-import 'package:thrive/src/modules/auth/presentation/pages/register_screen.dart';
+import 'package:thrive/src/modules/auth/presentation/register/pages/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
