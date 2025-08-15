@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
+import 'package:thrive/src/core/utils/custom_snackbar.dart';
 import 'package:thrive/src/core/utils/custom_text_field.dart';
 import 'package:thrive/src/modules/auth/presentation/register/controllers/register_controller_provider.dart';
 
@@ -82,7 +84,16 @@ class RegisterScreen extends ConsumerWidget {
                               (state.isLoading || !state.isFormValid)
                                   ? null
                                   : () {
-                                    controller.register();
+                                    controller.register(
+                                      onSuccess: () {
+                                        CustomSnackBar.success(context, 'Cadastro realizado com sucesso!');
+                                        context.push('/');
+                                      },
+                                      onError: () {
+                                        CustomSnackBar.error(context, 'Ocorreu um erro ao realizar o cadastro.');
+                                        context.push('/dashboard');
+                                      }
+                                    );
                                   },
                           text: 'Criar conta',
                           backgroundColor: Colors.white,
@@ -92,11 +103,6 @@ class RegisterScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 16),
                     if (state.isLoading) const CircularProgressIndicator(),
-                    if (state.errorMessage != null)
-                      Text(
-                        state.errorMessage!,
-                        style: const TextStyle(color: Colors.red),
-                      ),
                   ],
                 ),
               ),

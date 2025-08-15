@@ -90,7 +90,10 @@ class RegisterController extends StateNotifier<RegisterState> {
     );
   }
 
-  Future<void> register() async {
+  Future<void> register({
+    VoidCallback? onSuccess,
+    VoidCallback? onError,
+  }) async {
     _validateForm();
     if (!state.isFormValid) {
       state = state.copyWith(
@@ -117,8 +120,10 @@ class RegisterController extends StateNotifier<RegisterState> {
       passwordController.clear();
       confirmPasswordController.clear();
       state = state.copyWith(isLoading: false, errorMessage: null);
+      onSuccess?.call();
     } catch (e) {
       state = state.copyWith(errorMessage: e.toString(), isLoading: false);
+      onError?.call();
     }
   }
 

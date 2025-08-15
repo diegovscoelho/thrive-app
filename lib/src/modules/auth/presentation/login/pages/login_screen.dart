@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/app_styles.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
+import 'package:thrive/src/core/utils/custom_text_field.dart';
+import 'package:thrive/src/modules/auth/presentation/login/controllers/login_controller_provider.dart';
 import 'package:thrive/src/modules/auth/presentation/register/pages/register_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(loginControllerProvider);
+    final controller = ref.watch(loginControllerProvider.notifier);
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -39,12 +45,27 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     // TODO: Corrigir depois
-                    // CustomTextField(labelText: 'E-mail'),
-                    // const SizedBox(height: 20),
-                    // CustomTextField(labelText: 'Senha'),
+                    CustomTextField(
+                      labelText: 'E-mail',
+                      controller: controller.emailController,
+                      errorMessage: state.emailError,
+                      onChanged: (value) => controller.validateEmail(value),
+                    ),
+                    const SizedBox(height: 20),
+                    CustomTextField(
+                      labelText: 'Senha',
+                      controller: controller.passwordController,
+                      errorMessage: state.passwordError,
+                      onChanged: (value) => controller.validatePassword(value),
+                      obscureText: true,
+                    ),
                     const SizedBox(height: 32),
                     CustomPrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.login(
+                          onSuccess: () => context.push('/dashboard'),
+                        );
+                      },
                       text: 'Logar',
                       backgroundColor: Colors.white,
                       textColor: Colors.black,

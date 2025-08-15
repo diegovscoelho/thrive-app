@@ -27,7 +27,6 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color borderColor = errorMessage != null ? Colors.red : Colors.white54;
-    final double borderWidth = errorMessage != null ? 2.0 : 1.0;
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
@@ -47,20 +46,20 @@ class CustomTextField extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           borderSide: BorderSide(
             color: borderColor,
-            width:borderWidth,
+            width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           borderSide: BorderSide(
             color: borderColor,
-            width: borderWidth,
+            width: 1.0,
           ),
         ),
         errorBorder: _errorInputBorder,
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          borderSide: const BorderSide(color: Colors.red, width: 3.0),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0),
         ),
         errorText: errorMessage,
         errorStyle: const TextStyle(color: Colors.redAccent, fontSize: 12),
