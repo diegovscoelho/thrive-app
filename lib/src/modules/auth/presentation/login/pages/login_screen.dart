@@ -4,10 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:thrive/src/core/utils/app_styles.dart';
 import 'package:thrive/src/core/utils/custom_primary_button.dart';
+import 'package:thrive/src/core/utils/custom_snackbar.dart';
 import 'package:thrive/src/core/utils/custom_text_field.dart';
 import 'package:thrive/src/modules/auth/presentation/login/controllers/login_controller_provider.dart';
 import 'package:thrive/src/modules/auth/presentation/register/pages/register_screen.dart';
 
+// TODO: Implementar mensagens personalizadas para erros de login
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
 
@@ -64,6 +66,9 @@ class LoginScreen extends ConsumerWidget {
                       onPressed: () {
                         controller.login(
                           onSuccess: () => context.push('/dashboard'),
+                          onError: () {
+                            CustomSnackBar.error(context, 'E-mail ou senha inválidos.');
+                          },
                         );
                       },
                       text: 'Logar',

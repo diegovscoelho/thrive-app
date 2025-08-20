@@ -46,7 +46,7 @@ class LoginController extends StateNotifier<LoginState> {
     );
   }
 
-  Future<void> login({VoidCallback? onSuccess,}) async {
+  Future<void> login({VoidCallback? onSuccess, VoidCallback? onError}) async {
     _validateForm();
     if (!state.isFormValid) {
       state = state.copyWith();
@@ -59,16 +59,14 @@ class LoginController extends StateNotifier<LoginState> {
       final email = emailController.text;
       final password = passwordController.text;
 
-      await loginUserUsecase(
-        email: email,
-        password: password,
-      );
+      await loginUserUsecase(email: email, password: password);
 
       emailController.clear();
       passwordController.clear();
       state = state.copyWith(isLoading: false);
       onSuccess?.call();
     } catch (e) {
+      onError?.call();
       state = state.copyWith(isLoading: false, errorMessage: e.toString());
     }
   }

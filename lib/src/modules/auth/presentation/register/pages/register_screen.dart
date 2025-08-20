@@ -87,11 +87,10 @@ class RegisterScreen extends ConsumerWidget {
                                     controller.register(
                                       onSuccess: () {
                                         CustomSnackBar.success(context, 'Cadastro realizado com sucesso!');
-                                        context.push('/');
+                                        context.push('/login');
                                       },
                                       onError: () {
                                         CustomSnackBar.error(context, 'Ocorreu um erro ao realizar o cadastro.');
-                                        context.push('/dashboard');
                                       }
                                     );
                                   },
